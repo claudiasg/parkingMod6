@@ -1,0 +1,67 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foundation for Sites</title>
+    <link rel="stylesheet" href="css/foundation.css">
+    <link rel="stylesheet" href="css/app.css">
+  </head>
+  <body>
+    
+    <form>
+      <div class="row small-stack medium-unstack formulario-container">
+        <div class="columns">
+                <h1 align="center">PARKING CALCULATOR</h1>
+                
+                  <label for="tParqueo">Tipo Parqueo:</label>
+                  <div class="row ">
+                  <select name="tParqueo" id="tParqueo">
+                      <option value="cortoPlazo">A corto Plazo</option>
+                      <option value="economico">Economico</option>
+                      <option value="estandar">Estandar</option>
+                      <option value="largoPlazo">A Largo Plazo</option>
+                      <option value="nocturno">Nocturno</option>
+                  </select>
+                </div>
+
+                <h6>Seleccione Datos de Entrada</h6>  
+                <div class="row ">                       
+                  <label>Hora
+                      <input type="time" name="horaE" id="horaE" value="13:00">
+                  </label>           
+                  <label>Fecha
+                      <input type="date" name="fechaE" id="fechaE" value="2017-12-07">
+                  </label>
+                </div>
+                <h6>Seleccione Datos de Salida</h6>  
+                <div class="row ">                       
+                  <label>Hora
+                      <input type="time" name="horaS" id="horaS" value="15:00">
+                  </label>           
+                  <label>Fecha
+                      <input type="date" name="fechaS" id="fechaS" value="2017-12-07">
+                  </label>
+                </div>
+                
+                <input type="button" class="button" value="Enviar" id="submit"/><br>
+                <div class="row">
+                  <label>El Costo a Pagar es:
+                    <input type="text" name="costo" id="costo" value="0">
+                  </label>
+                </div>
+                
+        </div>
+       
+      
+    </form>
+
+
+
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/vendor/what-input.js"></script>
+    <script src="js/vendor/foundation.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
