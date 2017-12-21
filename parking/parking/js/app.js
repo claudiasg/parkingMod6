@@ -103,8 +103,11 @@ document.getElementById('submit').addEventListener("click", function(){
       tiempo=calcularTiempoDosFechas(d1,d2);      
       costo=calcularCosto(tipoP,tiempo[0],tiempo[1],tiempo[2],tiempo[3]);
       if((horaE || fechaE)>=(horaS|| fechaS))
+      {
         alert("Los datos de entrada deben ser menor a los datos de salida")
-      if(isNaN(costo))
+        costo=0;
+      }
+        if(isNaN(costo))
       {
         alert(costo);   
         document.getElementById("costo").value=0;   
