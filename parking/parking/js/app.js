@@ -23,6 +23,9 @@ function calcularCosto(tipoParqueo,hora,min,entrar,salir){
                 return("El parqueo solo es para 4 hrs. maximo");     
               else if((hora>4)&&(min>=0))         
                 return ("Elija un parqueo de mas horas")
+              /*else if(){
+
+              }*/
               else{
                 cpm=0.1;
                 precio=(hora*60+min)*cpm;
@@ -99,6 +102,8 @@ document.getElementById('submit').addEventListener("click", function(){
       d2= ConcatenarFechaHora(fechaS,horaS);     
       tiempo=calcularTiempoDosFechas(d1,d2);      
       costo=calcularCosto(tipoP,tiempo[0],tiempo[1],tiempo[2],tiempo[3]);
+      if((horaE || fechaE)>=(horaS|| fechaS))
+        alert("Los datos de entrada deben ser menor a los datos de salida")
       if(isNaN(costo))
       {
         alert(costo);   
