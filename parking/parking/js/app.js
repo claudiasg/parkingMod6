@@ -112,16 +112,16 @@ document.getElementById('submit').addEventListener("click", function(){
 	  }
 	  if (horaS === null || horaS == "")
 	  {
-		  mensajeError += "La hora de salida debe tener datos";
+		  mensajeError += "La hora de salida debe tener datos \n";
 	  }
 
 	  if (fechaE === null || fechaE == "")
 	  {
-		  mensajeError += "La fecha de entrada debe tener datos";
+		  mensajeError += "La fecha de entrada debe tener datos\n";
 	  }
 	  if (fechaS === null || fechaS == "")
 	  {
-		  mensajeError += "La fecha de salida debe tener datos";
+		  mensajeError += "La fecha de salida debe tener datos\n";
 	  }
 	  
 	  if (mensajeError != "")
