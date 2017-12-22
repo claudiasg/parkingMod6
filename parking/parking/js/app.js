@@ -115,6 +115,86 @@ document.getElementById('submit').addEventListener("click", function(){
             
       else
         document.getElementById("costo").value=costo+" "+"Bs.";   
+
+
+//************ INICIO TC35MFix asignado a Edgar Gregori *******************
+// si descomentar this.fechaAcutal(); y this.horaActual(); no tiene sentido las 3 sgtes lineas, y la ultima que es la llave de cierre if.
+	if (tipoP ==="estandar") {
+	  fechaActual();
+	  horaActual();
+	  console.log("fechaE", fechaE);
+	  if (!validarFechaEtrada(fechaE)) {
+        console.log("la fecha/hora de ingreso debe ser la actual");
+        document.getElementById("costo").value=0;
+        alert("la fecha/hora de ingreso debe ser la actual");
+	  }
+	  console.log("horaE", horaE);
+	  if (!validarHoraEtrada(horaE)) {
+        console.log("la hora de ingreso debe ser igual o mayor a la actual ");
+        document.getElementById("costo").value=0;
+        alert("la hora de ingreso debe ser igual o mayor a la actual ");
+	  }
+	}
+
+//************* FIN TC35MFix asignado a Edgar Gregori ***********
+
 })
 
+//***************** INICIO TC35MFix asignado a Edgar Gregori *****************
+//document.getElementById('submit').addEventListener("click", function(){
+function seleccionTipoParqueo() {
+  console.log("evt-onchange");
+  tipoP=document.getElementsByTagName('select')[0].value;
+  if (tipoP ==="estandar") {
+	console.log("estandar");
+	this.fechaActual();
+	this.horaActual();
+  }
+}
+function fechaActual(){
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth() + 1;
+  var yyyy = today.getFullYear();
+  if(dd<10){ dd='0'+dd;}
+  if(mm<10){mm='0'+mm;}
+    var today =  yyyy +'-' +  mm + '-' + dd;
+  document.getElementById("fechaE").value = today;
+  return today;
+}
+//this.fechaActual(); //descomentar si quieren fecha actual para todos parqueos
 
+function horaActual(){
+  var today = new Date();
+  var hh = today.getHours();
+  var min = today.getMinutes();
+  if(hh<10){ hh='0'+hh;}
+  if(min<10){min='0'+min;}
+  var today =  hh +':' +  min ;
+  document.getElementById("horaE").value = today;
+  console.log(today)
+  return today;
+}
+//this.horaActual();//descomentar si quieren hora actual para todos parqueos
+
+function validarFechaEtrada(fechaEntrada){
+  var fechaActual = this.fechaActual();
+  console.log("fechaActual", fechaActual)
+  if (fechaEntrada < fechaActual) {
+	console.log('false');
+	return false;
+  }
+  return true;
+}
+
+function validarHoraEtrada(horaEntrada){
+  var horaActual = this.horaActual();
+  console.log("horaActual", horaActual)
+  //if(horaActual<10){ hh='0'+hh;}
+  if (horaEntrada < horaActual) {
+	console.log('hora-entrada-false');
+	return false;
+  }
+  return true;
+}
+//****************** FIN TC35MFix asignado a Edgar Gregori ********************
