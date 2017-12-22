@@ -18,6 +18,10 @@ function calcularCosto(tipoParqueo,hora,min,entrar,salir){
     var precio=0;
         switch (tipoParqueo) {
           case "cortoPlazo":
+              
+
+
+
               if((hora==4)&&(min>0))
                 return("El parqueo solo es para 4 hrs. maximo");     
               else if((hora>4)&&(min>=0))         
@@ -28,6 +32,15 @@ function calcularCosto(tipoParqueo,hora,min,entrar,salir){
               else{
                 cpm=0.1;
                 precio=(hora*60+min)*cpm;
+
+                  //oscar
+                  if (precio<=0) {
+                    precio=0;
+                  }
+                  //fin oscar
+
+
+
                 return precio.toFixed(2);
               break;
               }   
@@ -75,7 +88,7 @@ function calcularCosto(tipoParqueo,hora,min,entrar,salir){
                     precio=tiemp*cpm; 
                   else
                     precio=(tiemp*cpm)+cpm;
-                                                  
+                                                                   
                 return precio.toFixed(2);   
               }                
             break;  
@@ -132,8 +145,9 @@ document.getElementById('submit').addEventListener("click", function(){
 	  
 	  if(( fechaE || horaE) >= ( fechaS || horaS))
       {
-        alert("Los datos de entrada deben ser menor a los datos de salida")
+        alert("La fecha y hora de entrada deben ser menor a la fecha y hora de salida");
         costo=0;
+
       }
       // las validaciones deben ser hechas antes de proceder con los cálculos
   
