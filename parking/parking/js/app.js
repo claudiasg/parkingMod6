@@ -63,9 +63,8 @@ function calcularCosto(tipoParqueo,hora,min,entrar,salir){
                 cpm=6;        
                 if(hora<12)  
                   return ("Elija otro tipo de parqueo menor a 12 horas"); 
-                else if  ((hora >= 12) && (min == 0))
+                else if  ((hora == 12) && (min == 0))
 					return ("Largo Plazo es para parqueos de más de 12 horas"); 
-				
 				else if((hora>=12)){
 					if (min>0) // Si ha pasado un minuto debería redondearse al siguiente
 					{
