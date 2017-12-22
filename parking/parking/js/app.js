@@ -1,6 +1,5 @@
 function ConcatenarFechaHora(fecha, hora){
   return fecha+" "+ hora;
-
 }
 
 function calcularTiempoDosFechas(date1, date2){
@@ -64,7 +63,11 @@ function calcularCosto(tipoParqueo,hora,min,entrar,salir){
                 cpm=6;        
                 if(hora<12)  
                   return ("Elija otro tipo de parqueo menor a 12 horas"); 
-                else if((hora>=12)&&(min>=0)){
+                else if((hora>=12)){
+					if (min>0) // Si ha pasado un minuto debería redondearse al siguiente
+					{
+						hora++;
+					}
                   tiemp=(hora/12).toFixed(0);
                   if((hora%12)==0)                           
                     precio=tiemp*cpm; 
@@ -98,11 +101,7 @@ document.getElementById('submit').addEventListener("click", function(){
       fechaS=document.getElementById('fechaS').value,
       horaS=document.getElementById('horaS').value;
       tipoP=document.getElementsByTagName('select')[0].value;      
-      d1= ConcatenarFechaHora(fechaE,horaE);
-      d2= ConcatenarFechaHora(fechaS,horaS);     
-      tiempo=calcularTiempoDosFechas(d1,d2);      
-      costo=calcularCosto(tipoP,tiempo[0],tiempo[1],tiempo[2],tiempo[3]);
-      
+     
 	  mensajeError = "";
 	  
 	  if (horaE === null || horaE == "")
@@ -129,12 +128,19 @@ document.getElementById('submit').addEventListener("click", function(){
 		  return;
 	  }
 	  
-	  if((horaE || fechaE)>=(horaS|| fechaS))
+	  if(( fechaE || horaE) >= ( fechaS || horaS))
       {
         alert("Los datos de entrada deben ser menor a los datos de salida")
         costo=0;
       }
-        if(isNaN(costo))
+      // las validaciones deben ser hechas antes de proceder con los cálculos
+  
+	    d1= ConcatenarFechaHora(fechaE,horaE);
+      d2= ConcatenarFechaHora(fechaS,horaS);     
+      tiempo=calcularTiempoDosFechas(d1,d2);      
+      costo=calcularCosto(tipoP,tiempo[0],tiempo[1],tiempo[2],tiempo[3]);
+	  
+      if(isNaN(costo))
       {
         alert(costo);   
         document.getElementById("costo").value=0;   
