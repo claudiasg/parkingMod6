@@ -102,7 +102,34 @@ document.getElementById('submit').addEventListener("click", function(){
       d2= ConcatenarFechaHora(fechaS,horaS);     
       tiempo=calcularTiempoDosFechas(d1,d2);      
       costo=calcularCosto(tipoP,tiempo[0],tiempo[1],tiempo[2],tiempo[3]);
-      if((horaE || fechaE)>=(horaS|| fechaS))
+      
+	  mensajeError = "";
+	  
+	  if (horaE === null || horaE == "")
+	  {
+		  mensajeError += "La hora de entrada debe tener datos \n";
+	  }
+	  if (horaS === null || horaS == "")
+	  {
+		  mensajeError += "La hora de salida debe tener datos";
+	  }
+
+	  if (fechaE === null || fechaE == "")
+	  {
+		  mensajeError += "La fecha de entrada debe tener datos";
+	  }
+	  if (fechaS === null || fechaS == "")
+	  {
+		  mensajeError += "La fecha de salida debe tener datos";
+	  }
+	  
+	  if (mensajeError != "")
+	  {
+		  alert(mensajeError);
+		  return;
+	  }
+	  
+	  if((horaE || fechaE)>=(horaS|| fechaS))
       {
         alert("Los datos de entrada deben ser menor a los datos de salida")
         costo=0;
