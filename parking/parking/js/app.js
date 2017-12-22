@@ -101,7 +101,7 @@ document.getElementById('submit').addEventListener("click", function(){
       fechaS=document.getElementById('fechaS').value,
       horaS=document.getElementById('horaS').value;
       tipoP=document.getElementsByTagName('select')[0].value;      
-      
+     
 	  mensajeError = "";
 	  
 	  if (horaE === null || horaE == "")
@@ -133,9 +133,9 @@ document.getElementById('submit').addEventListener("click", function(){
         alert("Los datos de entrada deben ser menor a los datos de salida")
         costo=0;
       }
-	  
-	  
-	  d1= ConcatenarFechaHora(fechaE,horaE);
+      // las validaciones deben ser hechas antes de proceder con los cálculos
+  
+	    d1= ConcatenarFechaHora(fechaE,horaE);
       d2= ConcatenarFechaHora(fechaS,horaS);     
       tiempo=calcularTiempoDosFechas(d1,d2);      
       costo=calcularCosto(tipoP,tiempo[0],tiempo[1],tiempo[2],tiempo[3]);
