@@ -143,12 +143,17 @@ document.getElementById('submit').addEventListener("click", function(){
 		  return;
 	  }
 	  
-	  if(( fechaE || horaE) >= ( fechaS || horaS))
+      if((fechaE<=fechaS)&&(horaE>=horaS))//if(( fechaE || horaE) >= ( fechaS || horaS))
       {
         alert("La fecha y hora de entrada deben ser menor a la fecha y hora de salida");
         costo=0;
-
       }
+	  else
+		if (fechaE>fechaS)
+		{
+			alert("La fecha de entrada deben ser menor a la fecha de salida");
+			costo=0;
+		}
       // las validaciones deben ser hechas antes de proceder con los cálculos
   
 	    d1= ConcatenarFechaHora(fechaE,horaE);
